@@ -3,9 +3,16 @@
 #include <windows.h>
 
 int set_color(int color);
-
+struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int loesung[9][9]);
 void output(int sudokuzahlen[9][9],int vorgabe[9][9]);
+void savegame(struct gameobject zahlen);
 
+struct gameobject
+{
+    int sudokuzahlen[9][9];
+    int vorgabe[9][9];
+    int loesung[9][9];
+};
 
 int main()
 {
@@ -65,7 +72,38 @@ int main()
 
 
 */
+
+    savegame(fillgameobject(sudokuzahlen, vorgabe, loesung));
     return 0;
+}
+
+struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int loesung[9][9])
+{
+    struct gameobject zahlen;
+
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < 9; j++)
+        {
+            zahlen.loesung[i][j] = loesung[i][j];
+            zahlen.sudokuzahlen[i][j] = sudokuzahlen[i][j];
+            zahlen.vorgabe[i][j] = vorgabe[i][j];
+        }
+    }
+    return zahlen;
+};
+
+void savegame(struct gameobject zahlen)
+{
+
+    FILE *fp;
+
+    fp = fopen("savegame.txt", "w");
+
+    fprintf(fp, "%",zahlen);
+
+
+    fclose(fp);
 }
 
 
@@ -185,3 +223,5 @@ int set_color(int color)
     // reverse "wrong" return value from Windows API
     return set_color_failed ? 0 : 1;
 }
+
+
