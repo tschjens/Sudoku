@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <string.h>
 
 int set_color(int color);
-struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int loesung[9][9]);
-void output(int sudokuzahlen[9][9],int vorgabe[9][9]);
+struct gameobject fillgameobject(struct gameobject input);
+void output(struct gameobject zahlen);
 void savegame(struct gameobject zahlen);
 
 struct gameobject
@@ -16,68 +17,72 @@ struct gameobject
 
 int main()
 {
-    int sudokuzahlen[9][9] = {0};
-    int vorgabe[9][9] = {0};
-    int loesung[9][9];
-
-    vorgabe[0][2] = 8;
-    vorgabe[0][6] = 2;
-    vorgabe[1][1] = 1;
-    vorgabe[1][3] = 3;
-    vorgabe[1][5] = 7;
-    vorgabe[1][7] = 5;
-    vorgabe[2][0] = 5;
-    vorgabe[2][1] = 4;
-    vorgabe[2][7] = 7;
-    vorgabe[2][8] = 6;
-    vorgabe[3][2] = 7;
-    vorgabe[3][3] = 5;
-    vorgabe[3][5] = 4;
-    vorgabe[3][6] = 6;
-    vorgabe[4][0] = 8;
-    vorgabe[4][8] = 1;
-    vorgabe[5][2] = 6;
-    vorgabe[5][3] = 1;
-    vorgabe[5][5] = 2;
-    vorgabe[5][6] = 8;
-    vorgabe[6][0] = 4;
-    vorgabe[6][1] = 9;
-    vorgabe[6][7] = 6;
-    vorgabe[6][8] = 2;
-    vorgabe[7][1] = 8;
-    vorgabe[7][3] = 7;
-    vorgabe[7][5] = 6;
-    vorgabe[7][7] = 3;
-    vorgabe[8][2] = 3;
-    vorgabe[8][6] = 9;
-
-
-    output(sudokuzahlen, vorgabe);
-/*    char auswahl = ' ';
-    do{
-        printf("+++Sudoku+++\n");
-        printf("n = Neues Spiel\n");
-        printf("x = Spiel beenden\n");
-        scanf("%c",&auswahl);
-    }while(auswahl != 'x' && auswahl != 'n');
-
-    if(auswahl == 'n' || auswahl == 'N')
+    struct gameobject zahlen =
     {
-        printf("1 = leichtes  Spiel\n");
-        printf("1 = mittleres Spiel\n");
-        printf("1 = schweres  Spiel\n");
-        printf("1 = Eigenes Sudoku importieren\n");
+        .sudokuzahlen = {0},
+        .loesung = {0}
 
-    }
+    };
 
 
-*/
 
-    savegame(fillgameobject(sudokuzahlen, vorgabe, loesung));
+    zahlen.vorgabe[0][2] = 8;
+    zahlen.vorgabe[0][6] = 2;
+    zahlen.vorgabe[1][1] = 1;
+    zahlen.vorgabe[1][3] = 3;
+    zahlen.vorgabe[1][5] = 7;
+    zahlen.vorgabe[1][7] = 5;
+    zahlen.vorgabe[2][0] = 5;
+    zahlen.vorgabe[2][1] = 4;
+    zahlen.vorgabe[2][7] = 7;
+    zahlen.vorgabe[2][8] = 6;
+    zahlen.vorgabe[3][2] = 7;
+    zahlen.vorgabe[3][3] = 5;
+    zahlen.vorgabe[3][5] = 4;
+    zahlen.vorgabe[3][6] = 6;
+    zahlen.vorgabe[4][0] = 8;
+    zahlen.vorgabe[4][8] = 1;
+    zahlen.vorgabe[5][2] = 6;
+    zahlen.vorgabe[5][3] = 1;
+    zahlen.vorgabe[5][5] = 2;
+    zahlen.vorgabe[5][6] = 8;
+    zahlen.vorgabe[6][0] = 4;
+    zahlen.vorgabe[6][1] = 9;
+    zahlen.vorgabe[6][7] = 6;
+    zahlen.vorgabe[6][8] = 2;
+    zahlen.vorgabe[7][1] = 8;
+    zahlen.vorgabe[7][3] = 7;
+    zahlen.vorgabe[7][5] = 6;
+    zahlen.vorgabe[7][7] = 3;
+    zahlen.vorgabe[8][2] = 3;
+    zahlen.vorgabe[8][6] = 9;
+
+
+    output(zahlen);
+    /*    char auswahl = ' ';
+        do{
+            printf("+++Sudoku+++\n");
+            printf("n = Neues Spiel\n");
+            printf("x = Spiel beenden\n");
+            scanf("%c",&auswahl);
+        }while(auswahl != 'x' && auswahl != 'n');
+
+        if(auswahl == 'n' || auswahl == 'N')
+        {
+            printf("1 = leichtes  Spiel\n");
+            printf("1 = mittleres Spiel\n");
+            printf("1 = schweres  Spiel\n");
+            printf("1 = Eigenes Sudoku importieren\n");
+
+        }
+
+
+    */
+    savegame(zahlen);
     return 0;
 }
 
-struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int loesung[9][9])
+struct gameobject fillgameobject(struct gameobject input)
 {
     struct gameobject zahlen;
 
@@ -85,9 +90,9 @@ struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int 
     {
         for(int j = 0; j < 9; j++)
         {
-            zahlen.loesung[i][j] = loesung[i][j];
-            zahlen.sudokuzahlen[i][j] = sudokuzahlen[i][j];
-            zahlen.vorgabe[i][j] = vorgabe[i][j];
+            zahlen.loesung[i][j] = input.loesung[i][j];
+            zahlen.sudokuzahlen[i][j] = input.sudokuzahlen[i][j];
+            zahlen.vorgabe[i][j] = input.vorgabe[i][j];
         }
     }
     return zahlen;
@@ -95,20 +100,41 @@ struct gameobject fillgameobject(int sudokuzahlen[9][9], int vorgabe[9][9], int 
 
 void savegame(struct gameobject zahlen)
 {
+    /*
+        FILE *file;
 
-    FILE *fp;
+        file = fopen("savegame.txt", "wb");
 
-    fp = fopen("savegame.txt", "w");
+        if(file != NULL)
+        {
+            fwrite(zahlen, sizeof(struct gameobject), 1,file);
+        }
 
-    fprintf(fp, "%",zahlen);
+        fclose(file);
+        */
+    struct gameobject *object = malloc(sizeof(struct gameobject));
+    for(int i = 0; i < 9; i++)
+    {
+        for(int j = 0; j < 9; j++)
+        {
+            object->sudokuzahlen[i][j] = (int)zahlen.sudokuzahlen[i][j];
+            object->loesung[i][j] = (int)zahlen.loesung[i][j];
+            object->vorgabe[i][j] = (int)zahlen.vorgabe[i][j];
+        }
+    }
+    // *object = fillgameobject(zahlen);
+    FILE * file= fopen("savegame.txt", "wb");
 
-
-    fclose(fp);
+    if (file != NULL)
+    {
+        fwrite(object, sizeof(struct gameobject), 1, file);
+        fclose(file);
+    }
 }
 
 
 
-void output(int sudokuzahlen[9][9],int vorgabe[9][9])
+void output(struct gameobject zahlen)
 {
 
 
@@ -136,11 +162,11 @@ void output(int sudokuzahlen[9][9],int vorgabe[9][9])
                 }
                 printf("\n--+-------+-------+-------+");
                 printf("\n");
-                }
+            }
             if(j == 0)
             {
-               switch (i)
-               {
+                switch (i)
+                {
                 case 0:
                     printf("A");
                     break;
@@ -168,8 +194,8 @@ void output(int sudokuzahlen[9][9],int vorgabe[9][9])
                 case 8:
                     printf("I");
                     break;
-               }
-               printf(" |");
+                }
+                printf(" |");
 
 
             }
@@ -178,21 +204,21 @@ void output(int sudokuzahlen[9][9],int vorgabe[9][9])
                 printf(" |");
             }
 
-            if(vorgabe[i][j] != 0)
+            if(zahlen.vorgabe[i][j] != 0)
             {
                 printf(" ");
                 set_color(12); //71 || 12
-                printf("%i", vorgabe[i][j]);
+                printf("%i", zahlen.vorgabe[i][j]);
                 set_color(15);
 
             }
-            else if (sudokuzahlen[i][j] == 0)
+            else if (zahlen.sudokuzahlen[i][j] == 0)
             {
                 printf(" .");
             }
             else
             {
-                printf(" %i",sudokuzahlen[i][j]);
+                printf(" %i",zahlen.sudokuzahlen[i][j]);
 
             }
             if(j == 8)
@@ -202,7 +228,7 @@ void output(int sudokuzahlen[9][9],int vorgabe[9][9])
         }
         if(i % 3 - 2 == 0 && i != 0)
         {
-             printf("\n--+-------+-------+-------+");
+            printf("\n--+-------+-------+-------+");
         }
         printf("\n");
     }
