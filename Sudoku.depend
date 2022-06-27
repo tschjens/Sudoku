@@ -1,7 +1,112 @@
 # depslib dependency file v1.0
-1655833968 source:c:\users\jens\documents\github\sudoku\main.c
+1656264504 source:c:\users\jens\documents\github\sudoku\main.c
 	<stdio.h>
 	<stdlib.h>
-	<windows.h>
 	<string.h>
+	<ctype.h>
+	"difficulty.h"
+	"convert.h"
+	"interface.h"
+	"save.h"
+
+1656263878 source:c:\users\jens\documents\github\sudoku\difficulty.c
+	"difficulty.h"
+
+1656263838 c:\users\jens\documents\github\sudoku\difficulty.h
+
+1656263643 source:c:\users\jens\documents\github\sudoku\convert.c
+	"convert.h"
+
+1656263234 c:\users\jens\documents\github\sudoku\convert.h
+
+1656264456 c:\users\jens\documents\github\sudoku\interface.h
+	<time.h>
+
+1656264456 source:c:\users\jens\documents\github\sudoku\interface.c
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	"interface.h"
+	"convert.h"
+	"difficulty.h"
+
+1656264227 c:\users\jens\documents\github\sudoku\save.h
+
+1656264206 source:c:\users\jens\documents\github\sudoku\save.c
+	<stdio.h>
+	"save.h"
+
+1656263643 source:c:\users\stefan\downloads\sudoku\convert.c
+	"convert.h"
+
+1656263234 c:\users\stefan\downloads\sudoku\convert.h
+
+1656268288 source:c:\users\stefan\downloads\sudoku\difficulty.c
+	"difficulty.h"
+
+1656266287 c:\users\stefan\downloads\sudoku\difficulty.h
+
+1656272719 source:c:\users\stefan\downloads\sudoku\interface.c
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	"interface.h"
+	"convert.h"
+	"difficulty.h"
+
+1656272053 c:\users\stefan\downloads\sudoku\interface.h
+	<time.h>
+
+1656267744 source:c:\users\stefan\downloads\sudoku\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"difficulty.h"
+	"convert.h"
+	"interface.h"
+	"save.h"
+
+1656268289 c:\users\stefan\downloads\sudoku\save.h
+
+1656272212 source:c:\users\stefan\downloads\sudoku\save.c
+	<stdio.h>
+	<stdlib.h>
+	"save.h"
+
+1656263643 source:c:\users\jens\desktop\sudoku\convert.c
+	"convert.h"
+
+1656278394 c:\users\jens\desktop\sudoku\convert.h
+
+1656277975 source:c:\users\jens\desktop\sudoku\difficulty.c
+	"difficulty.h"
+
+1656277953 c:\users\jens\desktop\sudoku\difficulty.h
+
+1656277898 source:c:\users\jens\desktop\sudoku\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"interface.h"
+
+1656277848 c:\users\jens\desktop\sudoku\interface.h
+	<time.h>
+
+1656277962 c:\users\jens\desktop\sudoku\save.h
+
+1656277848 source:c:\users\jens\desktop\sudoku\save.c
+	<stdio.h>
+	<stdlib.h>
+	"save.h"
+
+1656278184 source:c:\users\jens\desktop\sudoku\interface.c
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	"interface.h"
+	"convert.h"
+	"difficulty.h"
+	"save.h"
 

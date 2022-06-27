@@ -31,9 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="convert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="convert.h" />
+		<Unit filename="difficulty.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="difficulty.h" />
+		<Unit filename="interface.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interface.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="save.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="save.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
